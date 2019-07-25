@@ -1,0 +1,50 @@
+<h1>Compra</h1>
+<hr>
+
+
+<div class="row">
+
+
+    <div class="card col-md-6">
+
+        <div>
+            <app-heroe-tarjeta [heroe]="heroe"></app-heroe-tarjeta>
+        </div>
+
+    </div>
+
+    <div class="col-md-6 container">
+
+        <form>
+            <h4>Tarjeta</h4>
+            <hr>
+            <div class="form-group">
+                <label for="nombre">id Tarjeta</label><br>
+                <label for="idTarjeta">{{heroe.idx}}</label>
+            </div>
+
+            <div class="form-group">
+                <label for="nombre">Nombre</label><br>
+                <label for="idTarjeta">{{heroe.nombre}}</label>
+            </div>
+
+            <h4>Usuario</h4>
+            <hr>
+            <div class="form-group">
+                <label for="nombreUsuario">Nombre</label>
+                <input type="text" class="form-control" id="nombre" [(ngModel)]="compra.nombreUsuario" placeholder="Nombre" name="nombreUsuario">
+            </div>
+            <div class="form-group">
+                <label for="apellidoUsuario">Apellido</label>
+                <input type="text" class="form-control" id="apellido" [(ngModel)]="compra.apellidoUsuario" placeholder="Apellido" name="apellidoUsuario">
+            </div>
+
+            <button (click)="comprar()" type="btn" class="btn btn-primary">Comprar</button>
+            <a [routerLink]="['/home']" routerLinkActive="router-link-active" class="btn btn-outline-danger">Regresar</a>
+
+        </form>
+
+    </div>
+
+
+</div>

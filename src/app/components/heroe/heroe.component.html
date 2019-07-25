@@ -1,0 +1,95 @@
+<section class="container text-center">
+    <h1>{{heroe.nombre | uppercase}} <small>({{heroe.aparicion | date: 'y'}})</small> </h1>
+    <hr>
+    <div class="row animated fadeIn fast">
+
+        <div class="col-md-4">
+            <img [src]="heroe.img" class="img-fluid" [alt]="heroe.nombre">
+            <br><br>
+            <a [routerLink]="['/heroes']" routerLinkActive="router-link-active" class="btn btn-primary btn-block">Regresar</a>
+        </div>
+
+
+        <div class="col-md-8">
+
+            <h3>{{heroe.nombre}}</h3>
+            <hr>
+            <p>{{heroe.bio}}</p>
+            <div>
+                <img *ngIf="heroe.casa == 'DC'" src="assets/img/dc.png" alt="" style="width: 120px;">
+                <img *ngIf="heroe.casa == 'Marvel'" src="assets/img/marvel.png" alt="" style="width: 120px;">
+            </div>
+
+            <br>
+
+            <!-- <a [routerLink]="['/compra']" routerLinkActive="router-link-active" class="btn btn-outline-danger btn-block">Comprar</a> -->
+
+            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#ModalComprarTarjeta">Comprar Tarjeta</button>
+
+        </div>
+
+    </div>
+</section>
+
+
+
+
+
+<!----------------------------------------------- Modal ------------------------------------------------->
+
+<div class="modal fade" id="ModalComprarTarjeta" role="dialog" aria-labelledby="ModalComprarTarjeta" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content container">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modifircar Escribano</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-row">
+                        <div class="col">
+                            <label>IdTarjeta:</label>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            {{heroe.idx}}
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col">
+                            <label>Nombre Tarjeta:</label>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <h3>
+                                {{heroe.nombre}}
+                            </h3>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-row">
+                        <div class="col">
+                            <input type="text" class="form-control" [(ngModel)]="compra.nombreUsuario" value="{{compra.nombreUsuario}}" name="compra" placeholder="Nombre de Usuario">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-row">
+                        <div class="col">
+                            <input type="text" class="form-control" [(ngModel)]="compra.apellidoUsuario" value="{{compra.apellidoUsuario}}" name="compra" placeholder="Apellido de Usuario">
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="comprar()" data-dismiss="modal">Comprar</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="card">
+    <img class="card-img-top img-fluid" [src]="heroe.img" [alt]="heroe.nombre">
+    <div class="card-block main-container">
+        <h3 class="card-title">{{heroe.nombre}}</h3>
+        <p class="card-text">{{heroe.bio}}</p>
+        <p class="card-text"><small class="text-muted">{{heroe.aparicion}}</small></p>
+
+
+        <!-- En estas dos formas de navegacion se envia tambien un parametro
+            que va a ser la posicion del array que quiero mostrar -->
+
+        <!-------------------------- Forma de navegación boton ------------------------>
+        <button (click)="verHeroe()" type="button" class="main-btn btn btn-outline-primary btn-block">
+                Ver más...
+        </button>
+
+        <!-------------------------- Forma de navegacion: Link---------------------------
+            
+            <a [routerLink]="['/heroe', i]" *ngFor="let heroe of heroes" routerLinkActive="router-link-active" class="btn btn-outline-primary">Ver mas link ...</a>
+            
+            --------------------------------------------------------------------------------->
+
+    </div>
+</div>
